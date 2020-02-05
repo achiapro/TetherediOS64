@@ -12,6 +12,7 @@
 cd to files folder
 put ipsw.ipsw to main folder of ch3rryflower64
 if you are in files folder in terminal write ./Ch3rryflower64 and this will run you with whole downgrade"
+- To boot device cd to files folder and run ./tether_boot.sh
 
 # Credits 
 @benfxmth 
