@@ -135,7 +135,7 @@ then
     cp ipsw/Firmware/dfu/iBEC.n53.RELEASE.im4p files
     cd files
     echo "Downloading required downgrade shit...."
-    wget -P "https://doc-08-4o-docs.googleusercontent.com/docs/securesc/8dl8efsuniicr8cfm53r8ft3hhd0c8qp/tfq9j6avpf2cv7q7ld1vh1milgpjjgu8/1580947200000/11604534669305467632/14161548208518476425/1EsDk-cJPCycoUzVQn5-zlHQ1eY-YxtSp?e=download&authuser=0&nonce=6fhec8p4u9d8o&user=14161548208518476425&hash=ju0760990pn32tpidcr75670gsvvdmmo"
+    wget "http://download1509.mediafire.com/f1hai07d39jg/fjo0l8b4w4gwo6b/Downgrade_Shit_1011.zip"
     unzip Downgrade_Shit_1011.zip
     git clone https://github.com/LinusHenze/ipwndfu_public.git
     cd ipwndfu_public
