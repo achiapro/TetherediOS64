@@ -50,13 +50,9 @@ echo "Enter iOS Downgrade version"
 
 read version
 
-#grep ecid
-ret=$(./igetnonce2 2>/dev/null | grep ECID)
-ecidhex=$(echo $ret | cut -d '=' -f 2 )
-ecidhex2=$(echo $ecidhex | tr '[:lower:]' '[:upper:]')
-echo $ecidhex2 >/dev/null
-ecid=$(echo "obase=10; ibase=16; $ecidhex2" | bc)
-echo "Your ECID is $ecid"
+echo "Please enter your ECID"
+
+read ecid
 
 echo "Patching files..."
 sleep 2
