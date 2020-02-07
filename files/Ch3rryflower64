@@ -1,3 +1,4 @@
+#Added automation by rA9
 #!/bin/bash
 rm -rf __MACOSX
 rm -rf cool_shit.zip
@@ -47,17 +48,15 @@ sleep 1
 echo "Example: 10.3.3"
 echo "Enter iOS Downgrade version"
 
-
 read version
 
-
-echo "Please enter your ecid"
-
-read ecid
-
-
-
-
+#grep ecid
+ret=$(./igetnonce 2>/dev/null | grep ECID)
+ecidhex=$(echo $ret | cut -d '=' -f 2 )
+ecidhex2=$(echo $ecidhex | tr '[:lower:]' '[:upper:]')
+echo $ecidhex2 >/dev/null
+ecid=$(echo "obase=10; ibase=16; $ecidhex2" | bc)
+echo "Your ECID is $ecid"
 
 echo "Patching files..."
 sleep 2
@@ -88,10 +87,11 @@ then
     ./irecovery -f ibss.img4
     ./irecovery -f ibec.img4
     sleep 2
-    ./igetnonce
+    #run igetnonce and grep apnonce
+    ret=$(./igetnonce 2>/dev/null | grep ApNonce)
+    apnonce=$(echo $ret | cut -d '=' -f 2)
+    echo "Your current ApNonce is $apnonce"
     sleep 1
-    echo "Do you see ApNonce number up here.Please write it here"
-    read apnonce
     rm -rf apnonce.shsh2
     ./tsschecker -e $ecid -s -o -i 9.9.10.3.3 --buildid 14G60 -d iPhone6,2 --apnonce $apnonce 
     mv -v *.shsh apnonce.shsh
@@ -147,10 +147,10 @@ then
     ./irecovery -f ibss.img4
     ./irecovery -f ibec.img4
     sleep 2
-    ./igetnonce
-    sleep 1
-    echo "Do you see ApNonce number up here.Please write it here"
-    read apnonce
+    #run igetnonce and grep apnonce
+    ret=$(./igetnonce 2>/dev/null | grep ApNonce)
+    apnonce=$(echo $ret | cut -d '=' -f 2)
+    echo "Your current ApNonce is $apnonce"
     rm -rf apnonce.shsh2
     ./tsschecker -e $ecid -s -o -i 9.9.10.3.3 --buildid 14G60 -d iPhone6,2 --apnonce $apnonce 
     mv -v *.shsh apnonce.shsh
@@ -172,8 +172,6 @@ then
     cp custom.zip ../files
     cd ../files
     mv custom.zip custom.ipsw
-    
-    
     
     ./futurerestore -t apnonce.shsh custom.ipsw -b Mav7Mav8-7.60.00.Release.bbfw -s sep-firmware.n53.RELEASE.im4p -p BuildManifest_iPhone62_1033_OTA.plist -m BuildManifest_iPhone62_1033_OTA.plist
     echo "Downgraded device succesfully"
