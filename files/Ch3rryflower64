@@ -51,7 +51,7 @@ echo "Enter iOS Downgrade version"
 read version
 
 #grep ecid
-ret=$(./igetnonce 2>/dev/null | grep ECID)
+ret=$(./igetnonce2 2>/dev/null | grep ECID)
 ecidhex=$(echo $ret | cut -d '=' -f 2 )
 ecidhex2=$(echo $ecidhex | tr '[:lower:]' '[:upper:]')
 echo $ecidhex2 >/dev/null
