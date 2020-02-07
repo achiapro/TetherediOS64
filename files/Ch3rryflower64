@@ -83,7 +83,7 @@ then
     ./irecovery -f ibec.img4
     sleep 2
     #run igetnonce and grep apnonce
-    nonce=$(./igetnonce | grep "ApNonce=.*" -o | cut -c 9-)
+    apnonce=$(./igetnonce | grep "ApNonce=.*" -o | cut -c 9-)
     echo "Your current ApNonce is $apnonce"
     sleep 1
     rm -rf apnonce.shsh2
@@ -142,7 +142,7 @@ then
     ./irecovery -f ibec.img4
     sleep 2
     #run igetnonce and grep apnonce
-    nonce=$(./igetnonce | grep "ApNonce=.*" -o | cut -c 9-)
+    apnonce=$(./igetnonce | grep "ApNonce=.*" -o | cut -c 9-)
     echo "Your current ApNonce is $apnonce"
     rm -rf apnonce.shsh2
     ./tsschecker -e $ecid -s -o -i 9.9.10.3.3 --buildid 14G60 -d iPhone6,2 --apnonce $apnonce 
@@ -171,16 +171,3 @@ then
     echo "Enjoy iOS $version"
     
     fi
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
-    
-
